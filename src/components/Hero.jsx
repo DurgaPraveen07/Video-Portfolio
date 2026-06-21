@@ -126,7 +126,7 @@ const Hero = () => {
 
         {/* Video Control Button */}
         <motion.div 
-          className="fixed bottom-4 right-4 md:bottom-[40px] md:right-[30px] z-50"
+          className="absolute bottom-4 right-4 md:bottom-[40px] md:right-[30px] z-50"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 3.5, duration: 1, ease: 'easeOut' }}

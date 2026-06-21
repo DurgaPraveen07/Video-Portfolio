@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiExternalLink } from 'react-icons/fi';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,11 +41,139 @@ const defaultProjects = [
   }
 ];
 
+/* ─── Single Project Card ─────────────────────────────────────────────────── */
+const ProjectCard = ({ project, isMobile }) => {
+  if (isMobile) {
+    // MOBILE: fully revealed card, no hover required
+    return (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full relative rounded-3xl overflow-hidden"
+        style={{ minHeight: '420px' }}
+      >
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
+        >
+          <source
+            src={project.videoPlaceholder || 'https://cdn.pixabay.com/video/2021/08/11/84687-587212049_large.mp4'}
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+        {/* Content — always visible */}
+        <div className="relative z-10 p-6 flex flex-col justify-end h-full" style={{ minHeight: '420px' }}>
+          <div className="mt-auto">
+            <h3 className="text-2xl font-display font-bold text-white mb-3 leading-tight">
+              {project.title}
+            </h3>
+            <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {project.tech?.map((t, i) => (
+                <span key={i} className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-medium text-white border border-white/20">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="flex items-center justify-center w-11 h-11 rounded-full bg-white text-black">
+                <FiExternalLink className="text-lg" />
+              </span>
+              <span className="text-white text-xs font-bold uppercase tracking-widest">View Project</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    );
+  }
+
+  // DESKTOP: hover-reveal card with GSAP horizontal scroll
+  return (
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-[500px] lg:w-[600px] h-[60vh] shrink-0 relative group perspective-[1000px]"
+    >
+      <motion.div
+        className="w-full h-full rounded-3xl overflow-hidden relative preserve-3d"
+        whileHover={{ scale: 1.02, rotateY: -5 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      >
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+        >
+          <source
+            src={project.videoPlaceholder || 'https://cdn.pixabay.com/video/2021/08/11/84687-587212049_large.mp4'}
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+
+        {/* Content */}
+        <div className="absolute inset-0 p-12 flex flex-col justify-end">
+          <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+            <h3 className="text-5xl font-display font-bold text-white mb-4 leading-tight">
+              {project.title}
+            </h3>
+            <p className="text-gray-300 text-base mb-6 max-w-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-3 mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              {project.tech?.map((t, i) => (
+                <span key={i} className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-medium text-white border border-white/20">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+              <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black hover:bg-brand-red hover:text-white transition-colors duration-300">
+                <FiExternalLink className="text-xl" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </a>
+  );
+};
+
+/* ─── Projects Section ────────────────────────────────────────────────────── */
 const Projects = () => {
   const sectionRef = useRef(null);
-  const scrollContainerRef = useRef(null);
+  const trackRef = useRef(null);
   const [projects, setProjects] = useState(defaultProjects);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Detect mobile
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Fetch MongoDB projects
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -54,9 +182,7 @@ const Projects = () => {
           const data = await response.json();
           if (Array.isArray(data) && data.length > 0) {
             setProjects([...defaultProjects, ...data]);
-            setTimeout(() => {
-              ScrollTrigger.refresh();
-            }, 500);
+            setTimeout(() => ScrollTrigger.refresh(), 500);
           }
         }
       } catch (err) {
@@ -66,115 +192,81 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
+  // GSAP horizontal scroll — desktop only
   useEffect(() => {
     if (!projects.length) return;
 
     const timer = setTimeout(() => {
-      const pinWrap = scrollContainerRef.current;
+      const track = trackRef.current;
       const section = sectionRef.current;
+      if (!track || !section) return;
 
-      if (!pinWrap || !section) return;
-
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach(t => t.kill());
 
       const ctx = gsap.context(() => {
-        let mm = gsap.matchMedia();
+        const mm = gsap.matchMedia();
 
-        mm.add("(min-width: 768px)", () => {
-          const totalScrollWidth = pinWrap.scrollWidth;
-          const viewportWidth = window.innerWidth;
-          const scrollDistance = totalScrollWidth - viewportWidth;
+        mm.add('(min-width: 768px)', () => {
+          const scrollDistance = track.scrollWidth - window.innerWidth;
 
-          const tween = gsap.to(pinWrap, {
+          gsap.to(track, {
             x: () => -scrollDistance,
-            ease: "none",
+            ease: 'none',
             scrollTrigger: {
               trigger: section,
-              start: "top top",
+              start: 'top top',
               end: () => `+=${scrollDistance}`,
               pin: true,
               scrub: 1,
               invalidateOnRefresh: true,
-            }
+            },
           });
 
           ScrollTrigger.refresh();
         });
       });
 
-      return () => {
-        ctx.revert();
-      };
-    }, 100);
+      return () => ctx.revert();
+    }, 150);
 
     return () => clearTimeout(timer);
   }, [projects]);
 
   return (
-    <section id="projects" ref={sectionRef} className="min-h-screen md:h-screen bg-brand-black md:overflow-hidden relative">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="bg-brand-black relative"
+      style={{ minHeight: isMobile ? 'auto' : '100vh', overflow: isMobile ? 'visible' : 'hidden' }}
+    >
+      {/* Section heading */}
       <div className="absolute top-10 left-6 md:left-12 z-10 mix-blend-difference">
-        <h2 className="text-4xl md:text-6xl font-display font-black text-white">SELECTED <span className="text-outline">WORK</span></h2>
+        <h2 className="text-4xl md:text-6xl font-display font-black text-white">
+          SELECTED <span className="text-outline">WORK</span>
+        </h2>
       </div>
 
-      <div 
-        ref={scrollContainerRef} 
-        style={{ width: "max-content" }}
-        className="flex flex-col md:flex-row items-center pt-32 md:pt-20 pb-20 md:pb-0 px-6 md:px-[5vw] gap-12 md:gap-24 md:h-full"
-      >
-        {projects.map((project, index) => (
-          <div key={index} className="w-full md:w-[500px] lg:w-[600px] h-[50vh] md:h-[60vh] shrink-0 relative group perspective-[1000px]">
-            <motion.div 
-              className="w-full h-full rounded-3xl overflow-hidden relative preserve-3d"
-              whileHover={{ scale: 1.02, rotateY: -5 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-              {/* Background Video */}
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-              >
-                <source 
-                  src={
-                    project.videoPlaceholder || 
-                    "https://cdn.pixabay.com/video/2021/08/11/84687-587212049_large.mp4"
-                  } 
-                  type="video/mp4" 
-                />
-              </video>
-              
-              {/* Overlay Gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500`}></div>
+      {/* ── MOBILE layout ── */}
+      {isMobile && (
+        <div className="pt-28 pb-16 px-4 flex flex-col gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} isMobile={true} />
+          ))}
+        </div>
+      )}
 
-              {/* Content */}
-              <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end transform translate-z-[50px]">
-                <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-3xl md:text-5xl font-display font-bold text-white mb-4 leading-tight">{project.title}</h3>
-                  <p className="text-gray-300 text-sm md:text-base mb-6 max-w-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-3 mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    {project.tech?.map((t, i) => (
-                      <span key={i} className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-medium text-white border border-white/20">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black hover:bg-brand-red hover:text-white transition-colors duration-300">
-                      <FiExternalLink className="text-xl" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        ))}
-      </div>
+      {/* ── DESKTOP layout ── */}
+      {!isMobile && (
+        <div
+          ref={trackRef}
+          style={{ width: 'max-content' }}
+          className="flex flex-row items-center h-screen pt-20 px-[5vw] gap-24"
+        >
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} isMobile={false} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
