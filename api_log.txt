@@ -1,0 +1,102 @@
+[2026-06-21T12:05:51.644Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:05:51.763Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:25:44.983Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:25:45.004Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:27:29.349Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:27:29.529Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:42:26.353Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:42:26.366Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:42:26.863Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T12:42:27.171Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:51:11.993Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:51:12.029Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:51:12.847Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:51:13.275Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:52:56.178Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:52:56.190Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:52:56.453Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T14:52:56.640Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:03:31.421Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:03:31.437Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:03:31.723Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:03:31.922Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:04:54.014Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:04:54.026Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:04:54.760Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:04:54.912Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:14:13.072Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:14:13.087Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:14:13.337Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:14:13.576Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:43:54.395Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:43:54.426Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:43:55.360Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+[2026-06-21T15:43:55.528Z] envPath: C:\Users\durga\OneDrive\Desktop\VIDEO PORTFOLIO\.env.local, exists: true
+  Parsed MONGODB_URI: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority
+  Final URI used: mongodb+srv://DurgaPraveen:****@cluster0.tu1wd6o.mongodb.net/portfolio?retryWrites=true&w=majority

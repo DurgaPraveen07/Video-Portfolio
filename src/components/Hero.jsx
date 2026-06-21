@@ -56,16 +56,16 @@ const Hero = () => {
           className="object-cover w-full h-full scale-105"
         >
           {/* Using the provided portfolio video */}
-          <source src="/video portolio.mp4" type="video/mp4" />
+          <source src="/video portfolio.mp4" type="video/mp4" />
         </video>
         {/* Subtle cinematic overlay (15% opacity) as requested */}
         <div className="absolute inset-0 bg-black/15"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between mt-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col items-start mt-20 md:mt-0">
         
         {/* Left Content */}
-        <div className="w-full md:w-3/5 flex flex-col items-start text-left drop-shadow-lg">
+        <div className="w-full lg:w-2/3 flex flex-col items-start text-left drop-shadow-lg lg:-ml-4">
           <motion.p 
             className="text-brand-red text-lg md:text-xl font-bold tracking-wide mb-2"
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ const Hero = () => {
           </motion.p>
           
           <motion.h1 
-            className="text-6xl md:text-8xl font-display font-black tracking-tight mb-4 text-white"
+            className="font-black text-[clamp(2rem,4vw,4.5rem)] max-w-[80%] leading-[0.9] tracking-tight mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.7, duration: 0.8 }}
@@ -124,22 +124,22 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right Content - Play Button */}
+        {/* Video Control Button */}
         <motion.div 
-          className="hidden md:flex w-2/5 justify-end items-center"
+          className="fixed bottom-4 right-4 md:bottom-[40px] md:right-[30px] z-50"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 3.5, duration: 1, ease: 'easeOut' }}
         >
           <div className="relative group cursor-pointer" onClick={togglePlay}>
             <div className={`absolute inset-0 rounded-full blur-xl transition-opacity duration-500 animate-pulse ${isPlaying && isAudioEnabled ? 'bg-white opacity-20 group-hover:opacity-40' : 'bg-brand-red opacity-30 group-hover:opacity-60'}`}></div>
-            <div className={`relative w-32 h-32 rounded-full glassmorphism flex flex-col items-center justify-center border transition-colors duration-300 ${isPlaying && isAudioEnabled ? 'border-white/50 group-hover:border-white' : 'border-white/20 group-hover:border-brand-red/50'}`}>
+            <div className={`relative w-[50px] h-[50px] md:w-32 md:h-32 rounded-full glassmorphism flex flex-col items-center justify-center border transition-colors duration-300 ${isPlaying && isAudioEnabled ? 'border-white/50 group-hover:border-white' : 'border-white/20 group-hover:border-brand-red/50'}`}>
               {isPlaying && isAudioEnabled ? (
-                <FiPause className="text-4xl text-white mb-1 group-hover:scale-110 transition-transform duration-300" />
+                <FiPause className="text-xl md:text-4xl text-white mb-0 md:mb-1 group-hover:scale-110 transition-transform duration-300" />
               ) : (
-                <FiPlay className="text-4xl text-white ml-2 mb-1 group-hover:text-brand-red transition-colors duration-300" />
+                <FiPlay className="text-xl md:text-4xl text-white ml-1 md:ml-2 mb-0 md:mb-1 group-hover:text-brand-red transition-colors duration-300" />
               )}
-              <span className="text-[10px] font-bold uppercase tracking-widest text-white/70 mt-2">
+              <span className="hidden md:block text-[10px] font-bold uppercase tracking-widest text-white/70 mt-2">
                 {isPlaying && isAudioEnabled ? 'Pause' : 'Play Reel'}
               </span>
             </div>
