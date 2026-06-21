@@ -52,10 +52,14 @@ export default async function handler(req, res) {
 
     // GET
     if (req.method === 'GET') {
-      const certificates = await collection.find({}).toArray();
-      if (certificates.length === 0) {
-        return res.status(200).json(defaultCertificates);
+      // Ensure all default certificates are present in the database
+      for (const cert of defaultCertificates) {
+        const exists = await collection.findOne({ title: cert.title });
+        if (!exists) {
+          await collection.insertOne({ ...cert, createdAt: new Date() });
+        }
       }
+      const certificates = await collection.find({}).toArray();
       return res.status(200).json(certificates);
     }
 
