@@ -8,7 +8,8 @@ export default async function handler(req, res) {
   const expectedPassword = process.env.ADMIN_PASSWORD;
 
   if (expectedUsername && expectedPassword && username === expectedUsername && password === expectedPassword) {
-    return res.status(200).json({ success: true, token: 'auth-praveen-token-2026' });
+    const token = process.env.ADMIN_TOKEN || 'auth-praveen-token-2026';
+    return res.status(200).json({ success: true, token });
   }
 
   return res.status(401).json({ success: false, message: 'Invalid username or password' });

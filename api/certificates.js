@@ -14,7 +14,7 @@ const defaultCertificates = [
   { title: 'C++ Programming', pdfUrl: '' }
 ];
 
-const ADMIN_TOKEN = 'auth-praveen-token-2026';
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'auth-praveen-token-2026';
 
 function isAuthorized(req) {
   const authHeader = req.headers.authorization;
