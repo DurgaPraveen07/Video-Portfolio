@@ -118,7 +118,7 @@ const Contact = () => {
               { 
                 icon: FaDownload, 
                 label: 'Resume', 
-                href: '/Durga%20praveen%20resume.pdf', 
+                href: '/Chennuboyina_Durga_Praveen__Resume.pdf', 
                 color: 'hover:text-yellow-500 hover:border-yellow-500',
                 download: true 
               }
@@ -126,7 +126,7 @@ const Contact = () => {
               <motion.a 
                 key={i}
                 href={social.href}
-                download={social.download ? "Durga_Praveen_Resume.pdf" : undefined}
+                download={social.download ? "Chennuboyina_Durga_Praveen__Resume.pdf" : undefined}
                 target={social.href.startsWith('http') ? "_blank" : undefined}
                 rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
                 className={`flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 glassmorphism text-sm font-bold uppercase tracking-wider text-gray-300 transition-all duration-300 ${social.color}`}
