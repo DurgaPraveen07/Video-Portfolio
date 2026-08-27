@@ -1,0 +1,17 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /profile.png
+Allow: /video portfolio.mp4
+Allow: /Chennuboyina_Durga_Praveen__Resume.pdf
+
+# Disallow private admin routes
+Disallow: /praveen
+Disallow: /praveen/
+Disallow: /url/praveen
+Disallow: /url/praveen/
+Disallow: /api/admin/
+
+# Sitemap location
+Sitemap: https://durgapraveen.vercel.app/sitemap.xml

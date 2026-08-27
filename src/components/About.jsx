@@ -68,7 +68,7 @@ const About = () => {
               {/* Photo Area */}
               <div className="flex-1 flex flex-col items-center pt-8 px-6">
                 <div className="w-32 h-32 rounded-full bg-gray-200 border-4 border-black mb-6 overflow-hidden shadow-inner">
-                  <img src="/profile.png" alt="Durga Praveen" className="w-full h-full object-cover" />
+                  <img src="/profile.png" alt="Durga Praveen - AI Engineer Profile Photo" className="w-full h-full object-cover" width="128" height="128" />
                 </div>
                 
                 <h2 className="font-display font-bold text-3xl mb-1 text-center">Durga Praveen</h2>
@@ -134,6 +134,8 @@ const About = () => {
             ].map((tech, i) => (
               <motion.div
                 key={i}
+                aria-label={tech.name}
+                title={tech.name}
                 className="flex flex-col items-center justify-center gap-2 group"
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -143,7 +145,7 @@ const About = () => {
               >
                 <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center shadow-xl group-hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-all">
                   {tech.Icon ? (
-                    <tech.Icon className="text-3xl text-white group-hover:text-brand-red transition-colors" />
+                    <tech.Icon className="text-3xl text-white group-hover:text-brand-red transition-colors" aria-hidden="true" />
                   ) : (
                     <span className="font-bold text-white group-hover:text-brand-red">DF</span>
                   )}

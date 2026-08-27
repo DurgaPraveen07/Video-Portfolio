@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://durgapraveen.vercel.app/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://durgapraveen.vercel.app/profile.png</image:loc>
+      <image:title>Durga Praveen - AI Engineer &amp; Full Stack Developer</image:title>
+      <image:caption>Profile photo of Chennuboyina Durga Praveen</image:caption>
+    </image:image>
+  </url>
+</urlset>

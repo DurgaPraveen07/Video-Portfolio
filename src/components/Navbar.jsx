@@ -26,6 +26,7 @@ const Navbar = () => {
   return (
     <>
       <motion.nav
+        aria-label="Main Navigation"
         className={`fixed top-0 left-0 w-full z-[9000] transition-all duration-500 ${
           isScrolled ? 'py-4 glassmorphism' : 'py-8 bg-transparent'
         }`}
@@ -35,7 +36,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Logo */}
-          <a href="#home" className="text-xl font-display font-bold tracking-wider z-50">
+          <a href="#home" aria-label="Durga Praveen Home" className="text-xl font-display font-bold tracking-wider z-50">
             Durga Praveen
           </a>
 
@@ -57,6 +58,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <a
               href="#contact"
+              aria-label="Hire Durga Praveen"
               className="px-6 py-2.5 bg-brand-red text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
             >
               Hire Me
@@ -67,6 +69,8 @@ const Navbar = () => {
           <button
             className="md:hidden z-50 text-2xl text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>

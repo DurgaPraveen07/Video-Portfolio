@@ -61,11 +61,11 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-gray-400">
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-            <a href="#" className="hover:text-white transition-colors">GitHub</a>
-            <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-white transition-colors">Email</a>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#contact" aria-label="Navigate to Contact section" className="hover:text-white transition-colors">Contact</a>
+            <a href="https://github.com/DurgaPraveen07" target="_blank" rel="noopener noreferrer" aria-label="Visit Durga Praveen's GitHub profile" className="hover:text-white transition-colors">GitHub</a>
+            <a href="https://www.linkedin.com/in/chennuboyina-durga-praveen/" target="_blank" rel="noopener noreferrer" aria-label="Visit Durga Praveen's LinkedIn profile" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href="mailto:durgapraveenthekakarot@gmail.com" aria-label="Email Durga Praveen" className="hover:text-white transition-colors">Email</a>
+            <a href="#about" aria-label="About Durga Praveen" className="hover:text-white transition-colors">About</a>
           </div>
 
           <div className="text-center md:text-right text-xs text-gray-500 flex flex-col space-y-1">

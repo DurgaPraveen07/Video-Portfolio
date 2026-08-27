@@ -126,6 +126,7 @@ const Contact = () => {
               <motion.a 
                 key={i}
                 href={social.href}
+                aria-label={`Contact via ${social.label}`}
                 download={social.download ? "Chennuboyina_Durga_Praveen__Resume.pdf" : undefined}
                 target={social.href.startsWith('http') ? "_blank" : undefined}
                 rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
@@ -136,7 +137,7 @@ const Contact = () => {
                 transition={{ duration: 0.4, delay: 0.3 + (i * 0.1), type: 'spring' }}
                 whileHover={{ y: -5 }}
               >
-                <social.icon className="text-xl" />
+                <social.icon className="text-xl" aria-hidden="true" />
                 {social.label}
               </motion.a>
             ))}
@@ -156,8 +157,9 @@ const Contact = () => {
             
             <form className="flex flex-col space-y-6" onSubmit={handleSubmit}>
               <div className="flex flex-col space-y-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Name</label>
+                <label htmlFor="contact-name" className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Name</label>
                 <input 
+                  id="contact-name"
                   type="text" 
                   name="name"
                   value={formData.name}
@@ -168,8 +170,9 @@ const Contact = () => {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Email</label>
+                <label htmlFor="contact-email" className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Email</label>
                 <input 
+                  id="contact-email"
                   type="email" 
                   name="email"
                   value={formData.email}
@@ -180,8 +183,9 @@ const Contact = () => {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Phone Number</label>
+                <label htmlFor="contact-phone" className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Phone Number</label>
                 <input 
+                  id="contact-phone"
                   type="tel" 
                   name="phone"
                   value={formData.phone}
@@ -192,8 +196,9 @@ const Contact = () => {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Message</label>
+                <label htmlFor="contact-message" className="text-xs uppercase tracking-widest text-gray-400 font-bold ml-1">Message</label>
                 <textarea 
+                  id="contact-message"
                   rows="4" 
                   name="message"
                   value={formData.message}
@@ -206,6 +211,7 @@ const Contact = () => {
               <button 
                 type="submit" 
                 disabled={status === 'submitting'}
+                aria-label="Submit Contact Form"
                 className="w-full mt-4 bg-brand-red text-white font-bold uppercase tracking-widest py-5 rounded-xl hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? 'Sending...' : 'Send Message'}

@@ -114,11 +114,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.3, duration: 0.8 }}
           >
-            <a href="#projects" className="group flex items-center justify-center gap-3 px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+            <a href="#projects" aria-label="View Selected Work Projects" className="group flex items-center justify-center gap-3 px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
               View Projects
               <FiArrowRight className="text-xl group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#contact" className="px-8 py-4 bg-black/40 backdrop-blur-sm border border-white/30 text-white font-bold uppercase tracking-widest rounded-full hover:bg-white/20 transition-all duration-300">
+            <a href="#contact" aria-label="Contact Durga Praveen" className="px-8 py-4 bg-black/40 backdrop-blur-sm border border-white/30 text-white font-bold uppercase tracking-widest rounded-full hover:bg-white/20 transition-all duration-300">
               Contact Me
             </a>
           </motion.div>
@@ -131,7 +131,12 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 3.5, duration: 1, ease: 'easeOut' }}
         >
-          <div className="relative group cursor-pointer" onClick={togglePlay}>
+          <button 
+            type="button"
+            aria-label={isPlaying && isAudioEnabled ? 'Pause Video Reel' : 'Play Video Reel'} 
+            className="relative group cursor-pointer text-left bg-transparent border-0 p-0 font-inherit focus:outline-none" 
+            onClick={togglePlay}
+          >
             <div className={`absolute inset-0 rounded-full blur-xl transition-opacity duration-500 animate-pulse ${isPlaying && isAudioEnabled ? 'bg-white opacity-20 group-hover:opacity-40' : 'bg-brand-red opacity-30 group-hover:opacity-60'}`}></div>
             <div className={`relative w-[50px] h-[50px] md:w-32 md:h-32 rounded-full glassmorphism flex flex-col items-center justify-center border transition-colors duration-300 ${isPlaying && isAudioEnabled ? 'border-white/50 group-hover:border-white' : 'border-white/20 group-hover:border-brand-red/50'}`}>
               {isPlaying && isAudioEnabled ? (
@@ -143,7 +148,7 @@ const Hero = () => {
                 {isPlaying && isAudioEnabled ? 'Pause' : 'Play Reel'}
               </span>
             </div>
-          </div>
+          </button>
         </motion.div>
       </div>
 

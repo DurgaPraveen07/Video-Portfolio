@@ -82,6 +82,9 @@ const Certifications = () => {
                 <motion.div 
                   className={`glassmorphism p-6 md:p-8 rounded-2xl relative preserve-3d group-hover:bg-white/10 transition-colors duration-300 overflow-hidden ${pdfUrl ? 'cursor-pointer' : ''}`}
                   whileHover={{ scale: 1.02, x: 10 }}
+                  role={pdfUrl ? "button" : undefined}
+                  tabIndex={pdfUrl ? 0 : undefined}
+                  aria-label={`Certificate for ${title}`}
                   onClick={() => {
                     if (pdfUrl) {
                       if (pdfUrl.startsWith('data:application/pdf')) {

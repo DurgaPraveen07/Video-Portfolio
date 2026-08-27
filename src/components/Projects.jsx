@@ -50,6 +50,7 @@ const ProjectCard = ({ project, isMobile }) => {
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`View ${project.title} project details and live preview`}
         className="block w-full relative rounded-3xl overflow-hidden"
         style={{ minHeight: '420px' }}
       >
@@ -60,6 +61,7 @@ const ProjectCard = ({ project, isMobile }) => {
           muted
           playsInline
           preload="metadata"
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover opacity-70"
         >
           <source
@@ -89,7 +91,7 @@ const ProjectCard = ({ project, isMobile }) => {
             </div>
             <div className="flex items-center gap-3">
               <span className="flex items-center justify-center w-11 h-11 rounded-full bg-white text-black">
-                <FiExternalLink className="text-lg" />
+                <FiExternalLink className="text-lg" aria-hidden="true" />
               </span>
               <span className="text-white text-xs font-bold uppercase tracking-widest">View Project</span>
             </div>
@@ -105,6 +107,7 @@ const ProjectCard = ({ project, isMobile }) => {
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={`View ${project.title} project details and live preview`}
       className="block w-[500px] lg:w-[600px] h-[60vh] shrink-0 relative group perspective-[1000px]"
     >
       <motion.div
@@ -119,6 +122,7 @@ const ProjectCard = ({ project, isMobile }) => {
           muted
           playsInline
           preload="metadata"
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
         >
           <source
@@ -148,7 +152,7 @@ const ProjectCard = ({ project, isMobile }) => {
             </div>
             <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
               <span className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black hover:bg-brand-red hover:text-white transition-colors duration-300">
-                <FiExternalLink className="text-xl" />
+                <FiExternalLink className="text-xl" aria-hidden="true" />
               </span>
             </div>
           </div>
