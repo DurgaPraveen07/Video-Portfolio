@@ -57,6 +57,8 @@ const apiMiddlewarePlugin = () => ({
             handlerPath = './api/admin/login.js';
           } else if (url.pathname === '/api/contact') {
             handlerPath = './api/contact.js';
+          } else if (url.pathname === '/api/resume') {
+            handlerPath = './api/resume.js';
           } else {
             res.statusCode = 404;
             res.setHeader('Content-Type', 'application/json');

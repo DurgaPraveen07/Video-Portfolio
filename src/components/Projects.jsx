@@ -177,6 +177,19 @@ const Projects = () => {
     return () => window.removeEventListener('resize', check);
   }, []);
 
+  // Helper to deduplicate project array by unique ID/title
+  const deduplicateProjects = (items) => {
+    if (!Array.isArray(items)) return [];
+    const map = new Map();
+    items.forEach((item) => {
+      const key = item._id || item.id || item.title;
+      if (key && !map.has(key)) {
+        map.set(key, item);
+      }
+    });
+    return Array.from(map.values());
+  };
+
   // Fetch MongoDB projects
   useEffect(() => {
     const fetchProjects = async () => {
@@ -185,8 +198,7 @@ const Projects = () => {
         if (response.ok) {
           const data = await response.json();
           if (Array.isArray(data) && data.length > 0) {
-            setProjects([...defaultProjects, ...data]);
-            setTimeout(() => ScrollTrigger.refresh(), 500);
+            setProjects(deduplicateProjects(data));
           }
         }
       } catch (err) {
@@ -194,20 +206,28 @@ const Projects = () => {
       }
     };
     fetchProjects();
+
+    const handleProjectsUpdated = () => fetchProjects();
+    window.addEventListener('projects_updated', handleProjectsUpdated);
+    window.addEventListener('focus', handleProjectsUpdated);
+
+    return () => {
+      window.removeEventListener('projects_updated', handleProjectsUpdated);
+      window.removeEventListener('focus', handleProjectsUpdated);
+    };
   }, []);
 
   // GSAP horizontal scroll — desktop only
   useEffect(() => {
-    if (!projects.length) return;
+    if (!projects.length || isMobile) return;
 
+    let ctx;
     const timer = setTimeout(() => {
       const track = trackRef.current;
       const section = sectionRef.current;
       if (!track || !section) return;
 
-      ScrollTrigger.getAll().forEach(t => t.kill());
-
-      const ctx = gsap.context(() => {
+      ctx = gsap.context(() => {
         const mm = gsap.matchMedia();
 
         mm.add('(min-width: 768px)', () => {
@@ -219,22 +239,25 @@ const Projects = () => {
             scrollTrigger: {
               trigger: section,
               start: 'top top',
-              end: () => `+=${scrollDistance}`,
+              end: () => `+=${scrollDistance > 0 ? scrollDistance : 0}`,
               pin: true,
               scrub: 1,
               invalidateOnRefresh: true,
             },
           });
-
-          ScrollTrigger.refresh();
         });
+      }, sectionRef);
+
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
       });
+    }, 100);
 
-      return () => ctx.revert();
-    }, 150);
-
-    return () => clearTimeout(timer);
-  }, [projects]);
+    return () => {
+      clearTimeout(timer);
+      if (ctx) ctx.revert();
+    };
+  }, [projects, isMobile]);
 
   return (
     <section
@@ -253,9 +276,10 @@ const Projects = () => {
       {/* ── MOBILE layout ── */}
       {isMobile && (
         <div className="pt-28 pb-16 px-4 flex flex-col gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} isMobile={true} />
-          ))}
+          {projects.map((project, index) => {
+            const key = project._id || project.id || project.title || `proj-m-${index}`;
+            return <ProjectCard key={key} project={project} isMobile={true} />;
+          })}
         </div>
       )}
 
@@ -266,9 +290,10 @@ const Projects = () => {
           style={{ width: 'max-content' }}
           className="flex flex-row items-center h-screen pt-20 px-[5vw] gap-24"
         >
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} isMobile={false} />
-          ))}
+          {projects.map((project, index) => {
+            const key = project._id || project.id || project.title || `proj-d-${index}`;
+            return <ProjectCard key={key} project={project} isMobile={false} />;
+          })}
         </div>
       )}
     </section>

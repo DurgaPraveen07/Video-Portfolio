@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlus, FaEdit, FaTrash, FaSignOutAlt, FaFolderOpen, FaCertificate, FaArrowLeft, FaEye } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaSignOutAlt, FaFolderOpen, FaCertificate, FaArrowLeft, FaEye, FaFilePdf } from 'react-icons/fa';
 
 const PraveenPanel = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem('praveen_admin_token'));
@@ -35,6 +35,12 @@ const PraveenPanel = () => {
     title: '',
     pdfUrl: ''
   });
+
+  // Resume State
+  const [resumePdfUrl, setResumePdfUrl] = useState('');
+  const [resumeFileName, setResumeFileName] = useState('');
+  const [resumeUpdatedAt, setResumeUpdatedAt] = useState(null);
+  const [resumeFileError, setResumeFileError] = useState('');
 
   const showStatus = (text, type = 'success') => {
     setStatusMessage({ text, type });
@@ -120,6 +126,7 @@ const PraveenPanel = () => {
         });
         setEditingProjectId(null);
         fetchProjects();
+        window.dispatchEvent(new Event('projects_updated'));
       } else {
         showStatus(data.error ? `${data.message}: ${data.error}` : (data.message || 'Action failed'), 'error');
       }
@@ -155,6 +162,7 @@ const PraveenPanel = () => {
       if (response.ok && data.success) {
         showStatus('Project deleted successfully');
         fetchProjects();
+        window.dispatchEvent(new Event('projects_updated'));
       } else {
         showStatus(data.error ? `${data.message}: ${data.error}` : (data.message || 'Delete failed'), 'error');
       }
@@ -276,12 +284,92 @@ const PraveenPanel = () => {
     }
   };
 
+  // --- RESUME CRUD ---
+  const fetchResume = async () => {
+    try {
+      const response = await fetch('/api/resume');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.resume) {
+          setResumePdfUrl(data.resume.pdfUrl || '');
+          setResumeUpdatedAt(data.resume.updatedAt || null);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleResumeFileSelect = (e) => {
+    const file = e.target.files?.[0];
+    setResumeFileError('');
+    if (!file) return;
+
+    if (file.type !== 'application/pdf') {
+      setResumeFileError('Please upload a PDF file only.');
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      setResumeFileError(`File size exceeds 2MB limit (Selected file size: ${(file.size / (1024 * 1024)).toFixed(2)} MB). Please choose a PDF under 2MB.`);
+      e.target.value = '';
+      return;
+    }
+
+    setResumeFileName(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setResumePdfUrl(reader.result);
+      showStatus('PDF file loaded. Ready to save.');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleResumeSubmit = async (e) => {
+    e.preventDefault();
+    if (!resumePdfUrl) {
+      setResumeFileError('Please select a local PDF file or enter a valid PDF link.');
+      return;
+    }
+
+    setIsLoading(true);
+    setResumeFileError('');
+
+    try {
+      const response = await fetch('/api/resume', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ pdfUrl: resumePdfUrl })
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        showStatus('Resume updated successfully!');
+        if (data.resume?.updatedAt) {
+          setResumeUpdatedAt(data.resume.updatedAt);
+        }
+        setResumeFileName('');
+      } else {
+        setResumeFileError(data.message || 'Failed to update resume');
+        showStatus(data.message || 'Failed to update resume', 'error');
+      }
+    } catch (err) {
+      console.error(err);
+      showStatus('Network error', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // Fetch Data when logged in
   useEffect(() => {
     if (isLoggedIn) {
       const timer = setTimeout(() => {
         fetchProjects();
         fetchCertificates();
+        fetchResume();
       }, 0);
       return () => clearTimeout(timer);
     }
@@ -390,7 +478,7 @@ const PraveenPanel = () => {
         )}
 
         {/* Tab Controls */}
-        <div className="flex border-b border-white/10 mb-8">
+        <div className="flex border-b border-white/10 mb-8 flex-wrap">
           <button 
             onClick={() => setActiveTab('projects')}
             className={`flex items-center gap-2 px-6 py-4 font-bold uppercase tracking-wider border-b-2 text-sm transition-all cursor-pointer ${activeTab === 'projects' ? 'border-brand-red text-white' : 'border-transparent text-gray-400 hover:text-white'}`}
@@ -402,6 +490,12 @@ const PraveenPanel = () => {
             className={`flex items-center gap-2 px-6 py-4 font-bold uppercase tracking-wider border-b-2 text-sm transition-all cursor-pointer ${activeTab === 'certificates' ? 'border-brand-red text-white' : 'border-transparent text-gray-400 hover:text-white'}`}
           >
             <FaCertificate /> Certifications
+          </button>
+          <button 
+            onClick={() => setActiveTab('resume')}
+            className={`flex items-center gap-2 px-6 py-4 font-bold uppercase tracking-wider border-b-2 text-sm transition-all cursor-pointer ${activeTab === 'resume' ? 'border-brand-red text-white' : 'border-transparent text-gray-400 hover:text-white'}`}
+          >
+            <FaFilePdf /> Update Resume
           </button>
         </div>
 
@@ -710,6 +804,80 @@ const PraveenPanel = () => {
                   </div>
                 )}
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* --- RESUME TAB --- */}
+        {activeTab === 'resume' && (
+          <div className="max-w-2xl mx-auto">
+            <div className="glassmorphism p-8 md:p-10 rounded-2xl border border-white/10">
+              <h3 className="text-2xl font-bold mb-2 flex items-center gap-3">
+                <FaFilePdf className="text-brand-red" /> Update Portfolio Resume
+              </h3>
+              <p className="text-gray-400 text-sm mb-6">
+                Upload a new PDF resume (<strong>max 2MB</strong>) or paste a share link.
+              </p>
+
+              <form onSubmit={handleResumeSubmit} className="space-y-6">
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">
+                    Upload Local PDF (Max 2MB)
+                  </label>
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    onChange={handleResumeFileSelect}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-brand-red file:text-white hover:file:bg-white hover:file:text-brand-red cursor-pointer transition-all"
+                  />
+                  {resumeFileName && (
+                    <p className="text-xs text-green-400 mt-2 font-semibold">
+                      ✓ Selected file: {resumeFileName}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">
+                    Or Enter PDF URL / Share Link
+                  </label>
+                  <input
+                    type="text"
+                    value={resumePdfUrl.startsWith('data:') ? '' : resumePdfUrl}
+                    onChange={(e) => {
+                      setResumePdfUrl(e.target.value);
+                      setResumeFileName('');
+                    }}
+                    placeholder="https://drive.google.com/... or https://..."
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-red"
+                  />
+                </div>
+
+                {resumeFileError && (
+                  <div className="p-3 bg-red-900/40 border border-red-500/30 rounded-xl text-red-400 text-xs font-semibold">
+                    {resumeFileError}
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between pt-4 gap-4 flex-wrap">
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-wider rounded-xl hover:bg-white hover:text-brand-red transition-all cursor-pointer disabled:opacity-50"
+                  >
+                    {isLoading ? 'Saving...' : 'Save & Update Resume'}
+                  </button>
+
+                  <a
+                    href="/api/resume?download=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-xs uppercase font-bold text-gray-400 hover:text-white border border-white/20 px-4 py-3 rounded-xl transition-all"
+                  >
+                    <FaEye /> Preview Resume
+                  </a>
+                </div>
+              </form>
             </div>
           </div>
         )}
