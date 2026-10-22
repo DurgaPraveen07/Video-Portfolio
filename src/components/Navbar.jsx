@@ -59,7 +59,7 @@ const Navbar = () => {
             <a
               href="#contact"
               aria-label="Hire Durga Praveen"
-              className="px-6 py-2.5 bg-brand-red text-white text-sm font-bold uppercase tracking-wider rounded-full hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
+              className="px-6 py-2.5 bg-brand-red text-black text-sm font-bold uppercase tracking-wider rounded-full hover:bg-white hover:text-brand-accent transition-all duration-300 shadow-[0_0_20px_rgba(142,207,255,0.4)] hover:shadow-[0_0_30px_rgba(142,207,255,0.6)]"
             >
               Hire Me
             </a>
@@ -103,7 +103,7 @@ const Navbar = () => {
             <motion.a
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="px-8 py-4 bg-white text-brand-red text-xl font-bold uppercase tracking-wider rounded-full mt-8"
+              className="px-8 py-4 bg-white text-black hover:text-brand-accent text-xl font-bold uppercase tracking-wider rounded-full mt-8 shadow-[0_0_20px_rgba(0,0,0,0.3)]"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8 }}

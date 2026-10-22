@@ -8,9 +8,18 @@ export default {
     extend: {
       colors: {
         brand: {
-          red: '#FF2A2A',
-          black: '#000000',
-          white: '#FFFFFF',
+          red: '#8ECFFF',
+          black: '#080B12',
+          white: '#F8FAFC',
+          primary: '#8ECFFF',
+          secondary: '#60B8F5',
+          accent: '#268FE0',
+          soft: '#EAF6FF',
+          dark: '#080B12',
+          darkSecondary: '#111827',
+          light: '#F8FAFC',
+          muted: '#94A3B8',
+          border: '#263449',
         }
       },
       fontFamily: {

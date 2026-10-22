@@ -114,7 +114,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.3, duration: 0.8 }}
           >
-            <a href="#projects" aria-label="View Selected Work Projects" className="group flex items-center justify-center gap-3 px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+            <a href="#projects" aria-label="View Selected Work Projects" className="group flex items-center justify-center gap-3 px-8 py-4 bg-brand-red text-black font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-brand-accent transition-all duration-300 shadow-[0_0_25px_rgba(142,207,255,0.4)] hover:shadow-[0_0_35px_rgba(142,207,255,0.6)]">
               View Projects
               <FiArrowRight className="text-xl group-hover:translate-x-1 transition-transform" />
             </a>

@@ -15,7 +15,7 @@ const skillCategories = [
   {
     title: 'AI & ML',
     skills: ['Python', 'OpenCV', 'DeepFace', 'Machine Learning', 'Generative AI'],
-    color: 'from-brand-red to-orange-500'
+    color: 'from-[#8ECFFF] to-[#268FE0]'
   },
   {
     title: 'Tools',

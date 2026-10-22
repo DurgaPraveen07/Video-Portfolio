@@ -427,7 +427,7 @@ const PraveenPanel = () => {
 
             <button 
               type="submit" 
-              className="w-full bg-brand-red text-white font-bold uppercase tracking-widest py-5 rounded-xl hover:bg-white hover:text-brand-red transition-all duration-300 shadow-[0_0_20px_rgba(255,42,42,0.2)]"
+              className="w-full bg-brand-red text-black font-bold uppercase tracking-widest py-5 rounded-xl hover:bg-white hover:text-brand-accent transition-all duration-300 shadow-[0_0_20px_rgba(142,207,255,0.4)]"
             >
               Sign In
             </button>
@@ -582,7 +582,7 @@ const PraveenPanel = () => {
                     <button 
                       type="submit" 
                       disabled={isLoading}
-                      className="flex-1 bg-brand-red text-white text-xs font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-white hover:text-brand-red transition-all cursor-pointer"
+                      className="flex-1 bg-brand-red text-black text-xs font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-white hover:text-brand-accent transition-all cursor-pointer"
                     >
                       {editingProjectId ? 'Save Changes' : 'Add Project'}
                     </button>
@@ -714,7 +714,7 @@ const PraveenPanel = () => {
                     <button 
                       type="submit" 
                       disabled={isLoading}
-                      className="flex-1 bg-brand-red text-white text-xs font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-white hover:text-brand-red transition-all cursor-pointer"
+                      className="flex-1 bg-brand-red text-black text-xs font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-white hover:text-brand-accent transition-all cursor-pointer"
                     >
                       {editingCertId ? 'Save Changes' : 'Add Certificate'}
                     </button>
@@ -828,7 +828,7 @@ const PraveenPanel = () => {
                     type="file"
                     accept=".pdf"
                     onChange={handleResumeFileSelect}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-brand-red file:text-white hover:file:bg-white hover:file:text-brand-red cursor-pointer transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-brand-red file:text-black hover:file:bg-white hover:file:text-brand-accent cursor-pointer transition-all"
                   />
                   {resumeFileName && (
                     <p className="text-xs text-green-400 mt-2 font-semibold">
@@ -863,7 +863,7 @@ const PraveenPanel = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-wider rounded-xl hover:bg-white hover:text-brand-red transition-all cursor-pointer disabled:opacity-50"
+                    className="px-8 py-4 bg-brand-red text-black font-bold uppercase tracking-wider rounded-xl hover:bg-white hover:text-brand-accent transition-all cursor-pointer disabled:opacity-50"
                   >
                     {isLoading ? 'Saving...' : 'Save & Update Resume'}
                   </button>

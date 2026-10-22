@@ -37,8 +37,8 @@ const Process = () => {
 
     dotsRef.current.forEach((dot, i) => {
       gsap.to(dot, {
-        backgroundColor: '#FF2A2A',
-        boxShadow: '0 0 20px rgba(255,42,42,0.8)',
+        backgroundColor: '#8ECFFF',
+        boxShadow: '0 0 20px rgba(142,207,255,0.8)',
         scale: 1.5,
         scrollTrigger: {
           trigger: dot,
@@ -79,7 +79,7 @@ const Process = () => {
                   ref={pathRef}
                   d="M50,0 C50,100 10,150 10,250 C10,350 90,400 90,500 C90,600 10,650 10,750 C10,850 50,900 50,1000" 
                   fill="none" 
-                  stroke="#FF2A2A" 
+                  stroke="#8ECFFF" 
                   strokeWidth="2"
                   className="transition-all"
                 />

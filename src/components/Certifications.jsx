@@ -74,7 +74,7 @@ const Certifications = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Timeline Dot */}
-                <div className="absolute -left-[41px] md:-left-[73px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-black border-2 border-white/30 group-hover:border-brand-red group-hover:bg-brand-red transition-colors duration-300 z-10 shadow-[0_0_10px_rgba(255,42,42,0)] group-hover:shadow-[0_0_15px_rgba(255,42,42,0.8)]"></div>
+                <div className="absolute -left-[41px] md:-left-[73px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-black border-2 border-white/30 group-hover:border-brand-red group-hover:bg-brand-red transition-colors duration-300 z-10 shadow-[0_0_10px_rgba(142,207,255,0)] group-hover:shadow-[0_0_15px_rgba(142,207,255,0.8)]"></div>
                 
                 {/* Line connector */}
                 <div className="absolute -left-[41px] md:-left-[73px] top-1/2 -translate-y-1/2 w-8 md:w-16 h-[1px] bg-white/10 group-hover:bg-brand-red/50 transition-colors duration-300"></div>
