@@ -4,17 +4,29 @@ export async function POST(req: Request) {
   try {
     const { name, email, phone, message } = await req.json();
 
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_PASS ? process.env.EMAIL_PASS.replace(/\s+/g, '') : '';
+
+    if (!emailUser || !emailPass) {
+      console.error('Contact Email Error: EMAIL_USER or EMAIL_PASS environment variable is not configured.');
+      return Response.json(
+        { success: false, message: 'Server email service is not properly configured.' },
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: emailUser,
+        pass: emailPass,
       },
     });
 
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      from: emailUser,
+      to: emailUser,
+      replyTo: email,
       subject: `Portfolio Contact - ${name}`,
       html: `
         <h2>New Portfolio Message</h2>

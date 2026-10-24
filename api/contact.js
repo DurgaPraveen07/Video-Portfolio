@@ -14,17 +14,29 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_PASS ? process.env.EMAIL_PASS.replace(/\s+/g, '') : '';
+
+    if (!emailUser || !emailPass) {
+      console.error('Contact Email Error: EMAIL_USER or EMAIL_PASS environment variable is not configured.');
+      return res.status(500).json({
+        success: false,
+        message: 'Server email service is not properly configured.'
+      });
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: emailUser,
+        pass: emailPass,
       },
     });
 
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      from: emailUser,
+      to: emailUser,
+      replyTo: email,
       subject: `Portfolio Contact - ${name}`,
       html: `
         <h2>New Portfolio Message</h2>
